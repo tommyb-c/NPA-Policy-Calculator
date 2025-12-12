@@ -282,11 +282,11 @@
     const res = await postSubmission(payload);
 
     if (res.ok){
-      showMessage('Thanks — your inputs have been recorded.', '#2d7a2d');
+      showMessage('Thanks, your inputs have been recorded.', '#2d7a2d');
     } else {
       // show friendly error but do not reveal internals
       const detail = res.status ? ` (status ${res.status})` : (res.error ? `: ${res.error}` : '');
-      showMessage('Could not save submission to server' + detail + '. The calculation is shown above.', '#b22222');
+      showMessage('Could not save submission to server' + detail + '. Your calculation is shown above.', '#b22222');
       console.error('Submission error', res);
     }
   });
