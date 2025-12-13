@@ -7,31 +7,34 @@
 
   <link rel="icon" type="image/png" href="https://yournpa.wordpress.com/wp-content/uploads/2025/05/cropped-npa-website-favicon.png">
 
-  <!-- Epilogue font -->
   <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --brand-bg: #fef9eb;
-      --card-bg: #fef9eb;
-      --body-text: #151a29;
-      --btn-bg: #84163B;
-      --btn-text: #fef9eb;
-      --field-border: #d6d8df;
-      --accent: #84163B;
-      --radius: 12px;
-      --max-width: 760px;
+      --brand-bg:#fef9eb;
+      --card-bg:#fef9eb;
+      --body-text:#151a29;
+      --btn-bg:#84163B;
+      --btn-text:#fef9eb;
+      --field-border:#d6d8df;
+      --accent:#84163B;
+      --radius:12px;
+      --max-width:760px;
     }
 
-    html,body{height:100%;margin:0;background:var(--brand-bg);font-family:"Epilogue",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;color:var(--body-text);-webkit-font-smoothing:antialiased;}
+    html,body{
+      height:100%;
+      margin:0;
+      background:var(--brand-bg);
+      font-family:"Epilogue",system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      color:var(--body-text);
+    }
 
     .wrap{
       min-height:100%;
       display:flex;
-      align-items:left;
       justify-content:center;
       padding:28px;
-      box-sizing:border-box;
     }
 
     .card{
@@ -40,64 +43,31 @@
       background:var(--card-bg);
       border-radius:18px;
       padding:32px;
-      box-shadow:0 10px 30px rgba(8,20,40,0.12);
-      box-sizing:border-box;
+      box-shadow:0 10px 30px rgba(8,20,40,.12);
     }
 
-   .logo {
-  display: block;
-  margin: 0 0 18px 0;
-  max-width: 240px;
-  height: auto;
-  align-self: flex-start;
-}
-
-
-    h1{
-      text-align:left;
-      font-size:22px;
-      margin:0 0 8px;
-      font-weight:600;
-    }
-
-    .lead{
-      text-align:left;
-      margin:0 0 22px;
-      color: #35404f;
-      font-size:14px;
-    }
-
-    .field{
-      margin-bottom:14px;
-    }
-
-    label{
+    .logo{
       display:block;
-      font-size:13px;
-      margin-bottom:6px;
-      font-weight:600;
-      color:var(--body-text);
+      margin:0 0 18px 0;
+      max-width:240px;
     }
 
-    input[type="text"], input[type="number"]{
+    h1{font-size:22px;margin:0 0 8px;font-weight:600;}
+    .lead{margin:0 0 22px;font-size:14px;color:#35404f;}
+
+    .field{margin-bottom:14px;}
+    label{display:block;font-size:13px;margin-bottom:6px;font-weight:600;}
+    input{
       width:100%;
       padding:12px 14px;
-      border-radius: calc(var(--radius) - 2px);
+      border-radius:10px;
       border:1px solid var(--field-border);
       font-size:15px;
-      box-sizing:border-box;
-      outline: none;
-    }
-
-    input[type="text"]:focus, input[type="number"]:focus{
-      box-shadow:0 0 0 4px rgba(132,22,59,0.06);
-      border-color: var(--accent);
     }
 
     .btn{
-      display:inline-block;
       width:100%;
-      padding:12px 16px;
+      padding:12px;
       background:var(--btn-bg);
       color:var(--btn-text);
       font-weight:700;
@@ -105,10 +75,7 @@
       border:none;
       cursor:pointer;
       font-size:16px;
-      box-shadow: 0 6px 18px rgba(132,22,59,0.14);
     }
-
-    .btn:active{transform:translateY(1px);}
 
     .result{
       margin-top:18px;
@@ -119,178 +86,122 @@
       display:none;
     }
 
-    .result .amount{
-      display:block;
+    .amount{
       margin-top:8px;
+      font-size:22px;
       font-weight:700;
       color:var(--btn-bg);
-      font-size:22px;
     }
 
-    .message{
-      margin-top:10px;
-      font-size:14px;
-      color:#3a3f47;
-    }
-
-    /* small screens */
-    @media (max-width:480px){
-      .card{padding:20px;border-radius:14px;}
-      h1{font-size:18px;}
-    }
+    .message{margin-top:10px;font-size:14px;}
   </style>
 </head>
+
 <body>
-  <div class="wrap">
-    <div class="card" role="region" aria-label="NPA Policy Calculator">
-      <img class="logo" src="https://yournpa.wordpress.com/wp-content/uploads/2025/05/npa-logo-colored-full-edited.png" alt="National Psychedelics Association logo" />
-      <h1>Calculating the Policy for Your Service Center</h1>
-      <p class="lead">Enter your Service Center details below to estimate a policy amount. Submissions are recorded anonymously unless you provide a center name.</p>
+<div class="wrap">
+  <div class="card">
+    <img class="logo" src="https://yournpa.wordpress.com/wp-content/uploads/2025/05/npa-logo-colored-full-edited.png" alt="NPA logo">
 
-      <div class="field">
-        <label for="centerName">Service Center Name</label>
-        <input id="centerName" type="text" placeholder="e.g. Pacific Healing Center" aria-label="Service Center Name" />
-      </div>
+    <h1>Calculating the Policy for Your Service Center</h1>
+    <p class="lead">Enter your details below to estimate a policy amount.</p>
 
-      <div class="field">
-        <label for="facilitators">Number of Facilitators</label>
-        <input id="facilitators" type="number" min="0" value="0" aria-label="Number of Facilitators" />
-      </div>
-
-      <div class="field">
-        <label for="admins">Number of Administrative Staff</label>
-        <input id="admins" type="number" min="0" value="0" aria-label="Number of Administrative Staff" />
-      </div>
-
-      <button id="calcBtn" class="btn" aria-label="Calculate Policy">Calculate Policy</button>
-
-      <div id="resultBox" class="result" role="status" aria-live="polite">
-        <div id="resultText" style="font-size:15px; font-weight:600;"></div>
-        <div id="resultAmount" class="amount" aria-hidden="false"></div>
-      </div>
-
-      <div id="message" class="message" aria-hidden="false" style="display:none;"></div>
+    <div class="field">
+      <label>Service Center Name</label>
+      <input id="centerName" type="text">
     </div>
+
+    <div class="field">
+      <label>Number of Facilitators</label>
+      <input id="facilitators" type="number" min="0" value="0">
+    </div>
+
+    <div class="field">
+      <label>Number of Administrative Staff</label>
+      <input id="admins" type="number" min="0" value="0">
+    </div>
+
+    <button id="calcBtn" class="btn">Calculate Policy</button>
+
+    <div id="resultBox" class="result">
+      <div id="resultText"></div>
+      <div id="resultAmount" class="amount"></div>
+    </div>
+
+    <div id="message" class="message" style="display:none;"></div>
   </div>
+</div>
 
 <script>
 (function(){
-  'use strict';
-
-  // CONFIG - replace only if required
   const ENDPOINT = 'https://script.google.com/macros/s/AKfycbz6MPIiURVwQOdvmoZCwfqCOE_7UvEFyYkblevXR2APuBG620icKIuznh_5nxZt2UNE/exec';
   const TOKEN = 'npa-2025-policy-calculator';
 
-  // the exact formula you confirmed:
-  // Policy = ((966 * 0.08) * A) + ((355 * 1.08) * B) + (3130 * 0.5)
-  function computePolicy(A, B){
-    const partA = (966 * 0.08) * A;    // 77.28 * A
-    const partB = (355 * 1.08) * B;    // 383.4 * B
-    const fixed = 3130 * 0.5;          // 1565
-    return partA + partB + fixed;
-  }
-
-  // UI refs
-  const centerEl = document.getElementById('centerName');
-  const facilEl  = document.getElementById('facilitators');
-  const adminEl  = document.getElementById('admins');
-  const btn      = document.getElementById('calcBtn');
-  const resultBox = document.getElementById('resultBox');
-  const resultText = document.getElementById('resultText');
-  const resultAmount = document.getElementById('resultAmount');
-  const message = document.getElementById('message');
-
-  function showMessage(msg, color){
-    message.style.display = 'block';
-    message.style.color = color || '#3a3f47';
-    message.textContent = msg;
-  }
-
-  function hideMessage(){
-    message.style.display = 'none';
-    message.textContent = '';
+  function computePolicy(A,B){
+    return (966*0.08)*A + (355*1.08)*B + (3130*0.5);
   }
 
   function formatUSD(n){
-    return n.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 });
+    return n.toLocaleString('en-US',{style:'currency',currency:'USD'});
   }
 
-  // POST submission to Apps Script
   async function postSubmission(payload){
     try{
-      const resp = await fetch(ENDPOINT, {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
+      await fetch(ENDPOINT,{
+        method:'POST',
+        mode:'no-cors',
+        headers:{'Content-Type':'application/x-www-form-urlencoded'},
+        body:new URLSearchParams(payload).toString()
       });
-
-      // attempt to read JSON
-      let json = null;
-      try { json = await resp.json(); } catch(e){ json = null; }
-
-      if (!resp.ok){
-        // server returned non-200
-        return {ok:false, status:resp.status, json};
-      }
-      return {ok:true, status:resp.status, json};
-    } catch(err){
-      return {ok:false, error:err.message || String(err)};
+      return true;
+    }catch(e){
+      return false;
     }
   }
 
-  btn.addEventListener('click', async function onClick(e){
-    e.preventDefault();
-    hideMessage();
-    resultBox.style.display = 'none';
+  document.getElementById('calcBtn').addEventListener('click', async () => {
+    const A = Number(document.getElementById('facilitators').value||0);
+    const B = Number(document.getElementById('admins').value||0);
+    const name = document.getElementById('centerName').value.trim();
 
-    const centerName = centerEl.value.trim();
-    const A = Math.max(0, parseInt(facilEl.value || 0));
-    const B = Math.max(0, parseInt(adminEl.value || 0));
-
-    // basic validation
-    if (A === 0 && B === 0){
-      showMessage('Please enter at least 1 facilitator or admin staff to calculate.', '#b22222');
+    if(A===0 && B===0){
+      show('Please enter at least one staff member.',true);
       return;
     }
 
-    // compute
     const policy = computePolicy(A,B);
-    const formatted = formatUSD(policy);
 
-    // display result instantly
-    resultText.textContent = centerName ? `Estimated policy for ${centerName}` : 'Estimated policy amount';
-    resultAmount.textContent = formatted;
-    resultBox.style.display = 'block';
+    document.getElementById('resultText').textContent =
+      name ? `Estimated policy for ${name}` : 'Estimated policy amount';
+    document.getElementById('resultAmount').textContent = formatUSD(policy);
+    document.getElementById('resultBox').style.display='block';
 
-    // prepare payload to send
-    const payload = {
-      token: TOKEN,
-      service_center: centerName,
-      facilitators: A,
-      admins: B,
-      policy_amount: Math.round(policy * 100)/100, // two decimals
-      page_url: window.location.href,
-      user_agent: navigator.userAgent || '',
-      notes: ''
-    };
+    show('Saving your submission…');
 
-    // send to Google Apps Script
-    showMessage('Saving your submission...', '#35404f');
-    const res = await postSubmission(payload);
+    const ok = await postSubmission({
+      token:TOKEN,
+      service_center:name,
+      facilitators:A,
+      admins:B,
+      policy_amount:policy,
+      page_url:location.href,
+      user_agent:navigator.userAgent,
+      notes:''
+    });
 
-    if (res.ok){
-      showMessage('Thanks, your inputs have been recorded.', '#2d7a2d');
-    } else {
-      // show friendly error but do not reveal internals
-      const detail = res.status ? ` (status ${res.status})` : (res.error ? `: ${res.error}` : '');
-      showMessage('Could not save submission to server' + detail + '. Your calculation is shown above.', '#b22222');
-      console.error('Submission error', res);
-    }
+    show(
+      ok
+        ? 'Thanks — your inputs have been recorded.'
+        : 'Network issue saving submission. Calculation shown above.',
+      !ok
+    );
   });
 
+  function show(msg,isError){
+    const el=document.getElementById('message');
+    el.textContent=msg;
+    el.style.display='block';
+    el.style.color=isError?'#b22222':'#2d7a2d';
+  }
 })();
 </script>
 </body>
